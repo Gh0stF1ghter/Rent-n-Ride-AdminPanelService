@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using System.Reflection;
 
-namespace BLL.MappingConfigurations;
+namespace AdminPanel.BLL.MappingConfigurations;
 
 public static class GlobalMappingSettings
 {

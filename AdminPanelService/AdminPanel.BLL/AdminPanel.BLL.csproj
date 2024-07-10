@@ -19,9 +19,12 @@
     <Folder Include="CQS\UserService\User\Queries\" />
     <Folder Include="Models\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="DI\" />
     <Folder Include="Enums\" />
-    <Folder Include="MappingConfigurations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
   </ItemGroup>
 
 </Project>

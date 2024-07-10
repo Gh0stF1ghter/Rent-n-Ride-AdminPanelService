@@ -1,6 +1,10 @@
+using AdminPanel.BLL.DI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
+
+services.AddApplicationDependencies();
 
 services.AddControllers();
 services.AddEndpointsApiExplorer();

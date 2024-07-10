@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -30,6 +30,10 @@
     <Folder Include="Mocks\" />
     <Folder Include="HandlersTests\" />
     <Folder Include="DataGeneration\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdminPanel.BLL\AdminPanel.BLL.csproj" />
   </ItemGroup>
 
 </Project>

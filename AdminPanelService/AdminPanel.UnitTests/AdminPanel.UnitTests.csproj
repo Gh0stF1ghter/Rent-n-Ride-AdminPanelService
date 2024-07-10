@@ -26,4 +26,10 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mocks\" />
+    <Folder Include="HandlersTests\" />
+    <Folder Include="DataGeneration\" />
+  </ItemGroup>
+
 </Project>

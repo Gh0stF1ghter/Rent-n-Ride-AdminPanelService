@@ -1,4 +1,4 @@
-name: .NET with SonarCloud
+name: Admin Panel Service
 
 on:
   push:
@@ -10,10 +10,12 @@ on:
       - ".github/workflows/admin-panel-service.yaml"
 
 
-jobs:
+jobs:    
   build:
-
     runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
     steps:
     - uses: actions/checkout@v4
@@ -31,10 +33,16 @@ jobs:
 
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration Release
+  
+    env:
+      WORKING_DIRECTORY: "AdminPanelService"
 
   analyze:
 
     runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
     steps:
     - uses: actions/checkout@v4
@@ -54,3 +62,4 @@ jobs:
         EXCLUDE_FROM_COVERAGE: "**/Program.cs, **/Extensions/*, **/Exceptions/**, **/DI/*, **/Validators/*, **/Enums/**/*, **/MappingConfigurations/*, **/ViewModels/**, **/Controllers/*, **/Utilities/**"
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         EXCLUDE_FROM_SONAR: "**/ViewModels/**, **/Dockerfile"
+        WORKING_DIRECTORY: "AdminPanelService"

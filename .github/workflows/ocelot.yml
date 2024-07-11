@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
     paths:
-      - Ocelot.WebHost/Ocelot.WebHost.sln
+      - "Ocelot.WebHost/Ocelot.WebHost.sln"
       - ".github/workflows/ocelot.yaml"
 
 jobs:

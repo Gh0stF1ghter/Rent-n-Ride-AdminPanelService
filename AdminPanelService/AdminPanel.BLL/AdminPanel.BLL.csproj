@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="CQS\CatalogueService\CarModel\Commands\" />
+    <Folder Include="CQS\CatalogueService\CarModel\Queries\" />
+    <Folder Include="CQS\CatalogueService\Manufacturer\Commands\" />
+    <Folder Include="CQS\CatalogueService\Manufacturer\Queries\" />
+    <Folder Include="CQS\CatalogueService\Vehicle\Commands\" />
+    <Folder Include="CQS\CatalogueService\Vehicle\Queries\" />
+    <Folder Include="CQS\RentService\VehicleClientHistory\Commands\" />
+    <Folder Include="CQS\RentService\VehicleClientHistory\Queries\" />
+    <Folder Include="CQS\UserService\User\Commands\" />
+    <Folder Include="CQS\UserService\User\Queries\" />
+    <Folder Include="Models\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="DI\" />
+    <Folder Include="Enums\" />
+    <Folder Include="MappingConfigurations\" />
+  </ItemGroup>
+
+</Project>

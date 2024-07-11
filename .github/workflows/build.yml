@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
     paths:
       - "AdminPanelService/AdminPanelService.sln"
-      - ".github/workflows/admin-panel-service.yaml"
+      - ".github/workflows/admin-panel-service.yml"
 
 
 jobs:    

@@ -12,6 +12,7 @@ on:
 
 jobs:    
   build:
+    name: Build .Net
     runs-on: ubuntu-latest
     defaults:
       run: 
@@ -38,7 +39,7 @@ jobs:
       WORKING_DIRECTORY: "AdminPanelService"
 
   analyze:
-
+    name: Analyze with SonarCloud
     runs-on: ubuntu-latest
     defaults:
       run: 

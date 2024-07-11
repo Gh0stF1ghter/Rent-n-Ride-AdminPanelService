@@ -1,0 +1,316 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5186"
+  },
+  "Routes": [
+    //CatalogueService
+    //CarModels
+    {
+      "UpstreamPathTemplate": "/catalog/model/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/model/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "SwaggerKey": "CatalogueService"
+    },
+    {
+      "UpstreamPathTemplate": "/catalog/model",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/model",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": "Auth0Key",
+        "AllowedScopes": [ "change:catalogue" ]
+      },
+      "SwaggerKey": "CatalogueService"
+    },
+    {
+      "UpstreamPathTemplate": "/catalog/model/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete" ],
+      "DownstreamPathTemplate": "/api/model/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": [ "change:catalogue" ]
+      },
+      "SwaggerKey": "CatalogueService"
+    },
+    //Manufacturers
+    {
+      "UpstreamPathTemplate": "/catalog/manufacturer/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/manufacturer/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "SwaggerKey": "CatalogueService"
+    },
+    {
+      "UpstreamPathTemplate": "/catalog/manufacturer",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/manufacturer",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": [ "change:catalogue" ]
+      },
+      "SwaggerKey": "CatalogueService"
+    },
+    {
+      "UpstreamPathTemplate": "/catalog/manufacturer/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete" ],
+      "DownstreamPathTemplate": "/api/manufacturer/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": [ "change:catalogue" ]
+      },
+      "SwaggerKey": "CatalogueService"
+    },
+    //Vehicles
+    {
+      "UpstreamPathTemplate": "/catalog/vehicle/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/vehicle/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "SwaggerKey": "CatalogueService"
+    },
+    {
+      "UpstreamPathTemplate": "/catalog/vehicle",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/vehicle",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": [ "change:catalogue" ]
+      },
+      "SwaggerKey": "CatalogueService"
+    },
+    {
+      "UpstreamPathTemplate": "/catalog/vehicle/{id}",
+      "UpstreamHttpMethod": [ "Put", "Delete" ],
+      "DownstreamPathTemplate": "/api/vehicle/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5131
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": [ "change:catalogue" ]
+      },
+      "SwaggerKey": "CatalogueService"
+    },
+    //RentService
+    //VehicleClientHistory
+    {
+      "UpstreamPathTemplate": "/rent/history-of-use/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/history-of-use/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5236
+        }
+      ],
+      "SwaggerKey": "RentService"
+    },
+    {
+      "UpstreamPathTemplate": "/rent/history-of-use",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/history-of-use",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5236
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": []
+      },
+      "SwaggerKey": "RentService"
+    },
+    {
+      "UpstreamPathTemplate": "/rent/history-of-use/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/history-of-use/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5236
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": []
+      },
+      "SwaggerKey": "RentService"
+    },
+    {
+      "UpstreamPathTemplate": "/rent/history-of-use/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/history-of-use/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5236
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": [ "delete: history-of-use" ]
+      },
+      "SwaggerKey": "RentService"
+    },
+    //UserService
+    //Client
+    {
+      "UpstreamPathTemplate": "/users/client/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/client/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5054
+        }
+      ],
+      "SwaggerKey": "UserService"
+    },
+    {
+      "UpstreamPathTemplate": "/users/client",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/client",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5054
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": []
+      },
+      "SwaggerKey": "UserService"
+    },
+    {
+      "UpstreamPathTemplate": "/users/client/{id}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/client/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5054
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": []
+      },
+      "SwaggerKey": "UserService"
+    },
+    {
+      "UpstreamPathTemplate": "/users/client/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/client/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5054
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKeys": [ "Auth0Key" ],
+        "AllowedScopes": [ "delete: users" ]
+      },
+      "SwaggerKey": "UserService"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "CatalogueService",
+      "Config": [
+        {
+          "Name": "Catalogue Service",
+          "Version": "v1",
+          "Url": "http://localhost:5131/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "RentService",
+      "Config": [
+        {
+          "Name": "Rent Service",
+          "Version": "v1",
+          "Url": "http://localhost:5236/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "UserService",
+      "Config": [
+        {
+          "Name": "User Service",
+          "Version": "v1",
+          "Url": "http://localhost:5054/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ]
+}

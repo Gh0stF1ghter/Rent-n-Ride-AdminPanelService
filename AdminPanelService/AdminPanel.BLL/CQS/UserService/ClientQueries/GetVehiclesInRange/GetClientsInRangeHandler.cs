@@ -1,7 +1,7 @@
 ﻿using AdminPanel.BLL.Models;
 using MediatR;
 
-namespace AdminPanel.BLL.CQS.CatalogueService.Queries.VehicleQueries.GetVehiclesInRange;
+namespace AdminPanel.BLL.CQS.UserService.ClientQueries.GetVehiclesInRange;
 
 public sealed class GetClientsInRangeHandler : IRequestHandler<GetClientsInRangeQuery, IEnumerable<ClientModel>>
 {

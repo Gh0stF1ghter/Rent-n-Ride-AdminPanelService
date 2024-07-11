@@ -1,7 +1,7 @@
 ﻿using AdminPanel.BLL.Models;
 using MediatR;
 
-namespace AdminPanel.BLL.CQS.CatalogueService.Queries.VehicleQueries.GetVehicleById;
+namespace AdminPanel.BLL.CQS.UserService.ClientQueries.GetVehicleById;
 
 public sealed class GetClientByIdHandler : IRequestHandler<GetClientByIdQuery, ClientModel>
 {

@@ -16,6 +16,8 @@
     <Folder Include="Models\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Enums\" />
+    <Folder Include="DI\" />
+    <Folder Include="MappingConfigurations\" />
   </ItemGroup>
 
   <ItemGroup>

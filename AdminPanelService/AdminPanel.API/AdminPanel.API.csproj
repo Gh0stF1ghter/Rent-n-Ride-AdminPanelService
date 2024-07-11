@@ -20,4 +20,7 @@
     <Folder Include="ViewModels\ShortViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdminPanel.BLL\AdminPanel.BLL.csproj" />
+  </ItemGroup>
 </Project>

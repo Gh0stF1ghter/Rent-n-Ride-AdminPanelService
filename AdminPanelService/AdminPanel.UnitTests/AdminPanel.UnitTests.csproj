@@ -32,4 +32,8 @@
     <Folder Include="DataGeneration\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdminPanel.BLL\AdminPanel.BLL.csproj" />
+  </ItemGroup>
+
 </Project>

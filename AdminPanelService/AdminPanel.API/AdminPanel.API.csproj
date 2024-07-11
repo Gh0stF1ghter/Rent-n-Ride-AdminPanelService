@@ -23,5 +23,4 @@
   <ItemGroup>
     <ProjectReference Include="..\AdminPanel.BLL\AdminPanel.BLL.csproj" />
   </ItemGroup>
-
 </Project>

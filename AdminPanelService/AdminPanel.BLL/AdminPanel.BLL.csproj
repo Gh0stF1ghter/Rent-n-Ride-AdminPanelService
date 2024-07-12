@@ -7,16 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CQS\CatalogueService\CarModel\Commands\" />
-    <Folder Include="CQS\CatalogueService\CarModel\Queries\" />
-    <Folder Include="CQS\CatalogueService\Manufacturer\Commands\" />
-    <Folder Include="CQS\CatalogueService\Manufacturer\Queries\" />
-    <Folder Include="CQS\CatalogueService\Vehicle\Commands\" />
-    <Folder Include="CQS\CatalogueService\Vehicle\Queries\" />
-    <Folder Include="CQS\RentService\VehicleClientHistory\Commands\" />
-    <Folder Include="CQS\RentService\VehicleClientHistory\Queries\" />
-    <Folder Include="CQS\UserService\User\Commands\" />
-    <Folder Include="CQS\UserService\User\Queries\" />
+    <Compile Remove="CQS\UserService\Queries\**" />
+    <EmbeddedResource Remove="CQS\UserService\Queries\**" />
+    <None Remove="CQS\UserService\Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CQS\CatalogueService\Commands\" />
+    <Folder Include="CQS\RentService\VehicleClientHistoryCommands\" />
+    <Folder Include="CQS\UserService\ClientCommands\" />
     <Folder Include="Models\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Enums\" />
@@ -26,6 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
   </ItemGroup>
 

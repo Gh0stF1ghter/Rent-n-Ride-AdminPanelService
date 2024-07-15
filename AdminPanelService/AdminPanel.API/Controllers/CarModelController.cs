@@ -12,7 +12,7 @@ public class CarModelController(ISender sender) : ControllerBase
 {
     [HttpGet]
     [ActionName("GetAllModelNamesInRange")]
-    public async Task<IEnumerable<CarModelViewModel>> GetAll([FromQuery] int page, [FromQuery] int pageSize, CancellationToken cancellationToken)
+    public async Task<IEnumerable<CarModelViewModel>> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10, CancellationToken cancellationToken = default)
     {
         var modelNames = await sender.Send(new GetCarModelsInRangeQuery(page, pageSize), cancellationToken);
 

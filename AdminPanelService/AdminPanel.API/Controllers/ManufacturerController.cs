@@ -12,7 +12,7 @@ public class ManufacturerController(ISender sender) : ControllerBase
 {
     [HttpGet]
     [ActionName("GetAllManufacturersInRange")]
-    public async Task<IEnumerable<ManufacturerViewModel>> GetAll([FromQuery] int page, [FromQuery] int pageSize, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ManufacturerViewModel>> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10, CancellationToken cancellationToken = default)
     {
         var manufacturers = await sender.Send(new GetManufacturersInRangeQuery(page, pageSize), cancellationToken);
 

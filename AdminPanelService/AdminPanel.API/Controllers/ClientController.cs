@@ -12,7 +12,7 @@ public class ClientController(ISender sender) : ControllerBase
 {
     [HttpGet]
     [ActionName("GetAllClientsInRange")]
-    public async Task<IEnumerable<ClientViewModel>> GetAll([FromQuery] int page, [FromQuery] int pageSize, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ClientViewModel>> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10, CancellationToken cancellationToken = default)
     {
         var clients = await sender.Send(new GetClientsInRangeQuery(page, pageSize), cancellationToken);
 

@@ -11,7 +11,7 @@ namespace AdminPanel.API.Controllers;
 public class VehicleClientHistoryController(ISender sender) : ControllerBase
 {
     [HttpGet(Name = "GetAllVehicleClientHistoriesInRange")]
-    public async Task<IEnumerable<VehicleClientHistoryViewModel>> GetAll([FromQuery] int page, [FromQuery] int pageSize, CancellationToken cancellationToken)
+    public async Task<IEnumerable<VehicleClientHistoryViewModel>> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10, CancellationToken cancellationToken = default)
     {
         var vehicleClientHistories = await sender.Send(new GetVehicleClientHistoriesInRangeQuery(page, pageSize), cancellationToken);
 

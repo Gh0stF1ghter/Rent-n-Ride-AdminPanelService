@@ -48,6 +48,8 @@ public class CarModelController(ISender sender) : ControllerBase
     {
         var carModel = updateCarModelViewModel.Adapt<CarModel>();
         carModel.Id = id;
+
+        await sender.Send(new UpdateCarModelCommand(carModel), cancellationToken);
     }
 
     [HttpDelete("{id}")]

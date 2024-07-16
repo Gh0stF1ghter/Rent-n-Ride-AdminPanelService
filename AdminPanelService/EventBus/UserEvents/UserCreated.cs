@@ -1,4 +1,4 @@
-﻿namespace EventBus;
+﻿namespace EventBus.UserEvents;
 
 public record UserCreated(
     string FirstName,

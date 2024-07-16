@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "CatalogService";
+
+message ManufacturerModel {
+    string id = 1;
+    string name = 2;
+}
+
+message CarModel {
+    string id = 1;
+    string name = 2;
+    string manufacturerId = 3;
+    ManufacturerModel manufaturer = 4;
+}
+
+message VehicleModel {
+    string id = 1;
+    string plateNumber = 2;
+    int32 odo = 3;
+    double rentCost = 4;
+    bool isRented = 5;
+    int32 vehicleType = 6;
+    int32 vehicleState = 7;
+    int32 fuelType = 8;
+
+    string modelId = 9;
+    CarModel carModel = 10;
+}
+
+service CatalogService {
+    rpc GetCarModels(GetCarModelsRequest) returns (GetCarModelsResponse);
+}
+
+message GetCarModelsRequest {
+    int32 pageNumber = 1;
+    int32 pageSize = 2;
+}
+
+message GetCarModelsResponse {
+    repeated CarModel = 1;
+    string statusCode = 2;
+    string message = 3;
+}

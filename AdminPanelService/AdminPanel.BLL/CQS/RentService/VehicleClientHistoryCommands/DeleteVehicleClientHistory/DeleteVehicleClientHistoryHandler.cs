@@ -1,11 +1,13 @@
-﻿using MediatR;
+﻿using EventBus.VehicleClientHistoryEvents;
+using MassTransit;
+using MediatR;
 
 namespace AdminPanel.BLL.CQS.RentService.VehicleClientHistoryCommands.DeleteVehicleClientHistory;
 
-public sealed class DeleteVehicleClientHistoryHandler : IRequestHandler<DeleteVehicleClientHistoryCommand>
+public sealed class DeleteVehicleClientHistoryHandler(IPublishEndpoint publishEndpoint) : IRequestHandler<DeleteVehicleClientHistoryCommand>
 {
-    public Task Handle(DeleteVehicleClientHistoryCommand command, CancellationToken cancellationToken)
+    public async Task Handle(DeleteVehicleClientHistoryCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        await publishEndpoint.Publish(new VehicleClientHistoryDeleted(command.Id), cancellationToken);
     }
 }

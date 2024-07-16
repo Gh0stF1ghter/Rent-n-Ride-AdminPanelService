@@ -3,4 +3,4 @@ using MediatR;
 
 namespace AdminPanel.BLL.CQS.RentService.VehicleClientHistoryCommands.AddVehicleClientHistory;
 
-public sealed record AddVehicleClientHistoryCommand(VehicleClientHistoryModel NewModel) : IRequest<VehicleClientHistoryModel>;
+public sealed record AddVehicleClientHistoryCommand(VehicleClientHistoryModel NewModel) : IRequest;

@@ -34,30 +34,22 @@ public class ClientController(ISender sender) : ControllerBase
 
     [HttpPost]
     [ActionName("CreateClient")]
-    public async Task<ClientViewModel> Create([FromBody] ShortClientViewModel createClientViewModel, CancellationToken cancellationToken)
+    public async Task Create([FromBody] ShortClientViewModel createClientViewModel, CancellationToken cancellationToken)
     {
         var createClientModel = createClientViewModel.Adapt<ClientModel>();
 
-        var newClient = await sender.Send(new AddClientCommand(createClientModel), cancellationToken);
-
-        var clientVM = newClient.Adapt<ClientViewModel>();
-
-        return clientVM;
+        await sender.Send(new AddClientCommand(createClientModel), cancellationToken);
     }
 
     [HttpPut("{id}")]
     [ActionName("UpdateClientById")]
-    public async Task<ClientViewModel> Update([FromRoute] Guid id, [FromBody] ShortClientViewModel updateClientViewModel, CancellationToken cancellationToken)
+    public async Task Update([FromRoute] Guid id, [FromBody] ShortClientViewModel updateClientViewModel, CancellationToken cancellationToken)
     {
         var clientModel = updateClientViewModel.Adapt<ClientModel>();
 
         clientModel.Id = id;
 
-        var newClient = await sender.Send(new UpdateClientCommand(clientModel), cancellationToken);
-
-        var clientVM = newClient.Adapt<ClientViewModel>();
-
-        return clientVM;
+        await sender.Send(new UpdateClientCommand(clientModel), cancellationToken);
     }
 
     [HttpDelete("{id}")]

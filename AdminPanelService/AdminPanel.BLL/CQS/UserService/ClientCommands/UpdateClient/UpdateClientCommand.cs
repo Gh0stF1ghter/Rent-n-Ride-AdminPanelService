@@ -3,4 +3,4 @@ using MediatR;
 
 namespace AdminPanel.BLL.CQS.UserService.ClientCommands.UpdateClient;
 
-public sealed record UpdateClientCommand(ClientModel UpdatedModel) : IRequest<ClientModel>;
+public sealed record UpdateClientCommand(ClientModel UpdatedModel) : IRequest;

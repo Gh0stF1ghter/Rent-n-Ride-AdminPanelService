@@ -1,11 +1,14 @@
-﻿using MediatR;
+﻿using EventBus.UserEvents;
+using Mapster;
+using MassTransit;
+using MediatR;
 
 namespace AdminPanel.BLL.CQS.UserService.ClientCommands.DeleteClient;
 
-public sealed class DeleteClientHandler : IRequestHandler<DeleteClientCommand>
+public sealed class DeleteClientHandler(IPublishEndpoint publishEndpoint) : IRequestHandler<DeleteClientCommand>
 {
-    public Task Handle(DeleteClientCommand command, CancellationToken cancellationToken)
+    public async Task Handle(DeleteClientCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        await publishEndpoint.Publish(new UserDeleted(command.Id), cancellationToken);
     }
 }

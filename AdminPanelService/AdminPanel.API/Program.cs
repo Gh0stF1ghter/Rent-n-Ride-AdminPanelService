@@ -1,10 +1,13 @@
+using AdminPanel.API.DI;
 using AdminPanel.BLL.DI;
+using User.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 
 services.AddApplicationDependencies();
+services.AddApiDependencies();
 
 services.AddControllers();
 services.AddEndpointsApiExplorer();
@@ -13,11 +16,10 @@ services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 

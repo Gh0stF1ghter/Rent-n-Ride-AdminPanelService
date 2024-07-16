@@ -34,29 +34,21 @@ public class ManufacturerController(ISender sender) : ControllerBase
 
     [HttpPost]
     [ActionName("CreateManufacturer")]
-    public async Task<ManufacturerViewModel> Create([FromBody] ShortManufacturerViewModel createManufacturerViewModel, CancellationToken cancellationToken)
+    public async Task Create([FromBody] ShortManufacturerViewModel createManufacturerViewModel, CancellationToken cancellationToken)
     {
         var manufacturerModel = createManufacturerViewModel.Adapt<ManufacturerModel>();
 
-        var newManufacturer = await sender.Send(new AddManufacturerCommand(manufacturerModel), cancellationToken);
-
-        var manufacturerVM = newManufacturer.Adapt<ManufacturerViewModel>();
-
-        return manufacturerVM;
+        await sender.Send(new AddManufacturerCommand(manufacturerModel), cancellationToken);
     }
 
     [HttpPut("{id}")]
     [ActionName("UpdateManufacturerById")]
-    public async Task<ManufacturerViewModel> Update([FromRoute] Guid id, [FromBody] ShortManufacturerViewModel updateManufacturerViewModel, CancellationToken cancellationToken)
+    public async Task Update([FromRoute] Guid id, [FromBody] ShortManufacturerViewModel updateManufacturerViewModel, CancellationToken cancellationToken)
     {
         var manufacturerModel = updateManufacturerViewModel.Adapt<ManufacturerModel>();
         manufacturerModel.Id = id;
 
-        var newManufacturer = await sender.Send(new UpdateManufacturerCommand(manufacturerModel), cancellationToken);
-
-        var manufacturerVM = newManufacturer.Adapt<ManufacturerViewModel>();
-
-        return manufacturerVM;
+        await sender.Send(new UpdateManufacturerCommand(manufacturerModel), cancellationToken);
     }
 
     [HttpDelete("{id}")]

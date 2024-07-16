@@ -3,6 +3,7 @@ using AdminPanel.BLL.CQS.CatalogueService.Commands.CarModelCommands.DeleteCarMod
 using AdminPanel.BLL.CQS.CatalogueService.Commands.CarModelCommands.UpdateCarModel;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelById;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelsInRange;
+using EventBus.CatalogueServiceEvents.CarModelEvents;
 
 namespace AdminPanel.API.Controllers;
 
@@ -34,29 +35,19 @@ public class CarModelController(ISender sender) : ControllerBase
 
     [HttpPost]
     [ActionName("CreateModelName")]
-    public async Task<CarModelViewModel> Create([FromBody] ShortCarModelViewModel createCarModelViewModel, CancellationToken cancellationToken)
+    public async Task Create([FromBody] ShortCarModelViewModel createCarModelViewModel, CancellationToken cancellationToken)
     {
         var carModel = createCarModelViewModel.Adapt<CarModel>();
 
-        var newModelName = await sender.Send(new AddCarModelCommand(carModel), cancellationToken);
-
-        var modelNameVM = newModelName.Adapt<CarModelViewModel>();
-
-        return modelNameVM;
+        await sender.Send(new AddCarModelCommand(carModel), cancellationToken);
     }
 
     [HttpPut("{id}")]
     [ActionName("UpdateModelNameById")]
-    public async Task<CarModelViewModel> Update([FromRoute] Guid id, [FromBody] ShortCarModelViewModel updateCarModelViewModel, CancellationToken cancellationToken)
+    public async Task Update([FromRoute] Guid id, [FromBody] ShortCarModelViewModel updateCarModelViewModel, CancellationToken cancellationToken)
     {
         var carModel = updateCarModelViewModel.Adapt<CarModel>();
         carModel.Id = id;
-
-        var newModelName = await sender.Send(new UpdateCarModelCommand(carModel), cancellationToken);
-
-        var CarModelViewModel = newModelName.Adapt<CarModelViewModel>();
-
-        return CarModelViewModel;
     }
 
     [HttpDelete("{id}")]

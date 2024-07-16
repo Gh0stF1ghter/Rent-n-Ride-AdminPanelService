@@ -1,11 +1,13 @@
-﻿using MediatR;
+﻿using EventBus.CatalogueServiceEvents.CarModelEvents;
+using MassTransit;
+using MediatR;
 
 namespace AdminPanel.BLL.CQS.CatalogueService.Commands.CarModelCommands.DeleteCarModel;
 
-public sealed class DeleteCarModelHandler : IRequestHandler<DeleteCarModelCommand>
+public sealed class DeleteCarModelHandler(IPublishEndpoint publishEndpoint) : IRequestHandler<DeleteCarModelCommand>
 {
-    public Task Handle(DeleteCarModelCommand command, CancellationToken cancellationToken)
+    public async Task Handle(DeleteCarModelCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        await publishEndpoint.Publish(new CarModelDeleted(command.Id), cancellationToken);
     }
 }

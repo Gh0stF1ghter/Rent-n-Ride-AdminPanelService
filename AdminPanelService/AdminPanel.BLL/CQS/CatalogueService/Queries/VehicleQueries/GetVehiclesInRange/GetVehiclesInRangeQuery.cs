@@ -3,4 +3,4 @@ using MediatR;
 
 namespace AdminPanel.BLL.CQS.CatalogueService.Queries.VehicleQueries.GetVehiclesInRange;
 
-public sealed class GetVehiclesInRangeQuery(int page, int pageSize) : IRequest<IEnumerable<VehicleModel>>;
+public sealed record GetVehiclesInRangeQuery(int Page, int PageSize) : IRequest<IEnumerable<VehicleModel>>;

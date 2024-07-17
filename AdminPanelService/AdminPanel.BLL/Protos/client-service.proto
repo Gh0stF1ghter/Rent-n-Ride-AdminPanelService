@@ -28,9 +28,9 @@ message GetClientsInRangeRequest {
 }
 
 message GetClientsInRangeResponse {
-    repeated ClientModel clients = 1;
+    repeated ProtoClientModel clients = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }
 
 message GetClientRequest {
@@ -38,7 +38,7 @@ message GetClientRequest {
 }
 
 message GetClientResponse {
-    ClientModel client = 1; 
+    ProtoClientModel client = 1; 
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }

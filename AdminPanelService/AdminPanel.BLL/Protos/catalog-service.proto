@@ -11,7 +11,7 @@ message ProtoCarModel {
     string id = 1;
     string name = 2;
     string manufacturerId = 3;
-    ManufacturerModel manufaturer = 4;
+    ProtoManufacturerModel manufaturer = 4;
 }
 
 message ProtoVehicleModel {
@@ -25,7 +25,7 @@ message ProtoVehicleModel {
     int32 fuelType = 8;
 
     string modelId = 9;
-    CarModel carModel = 10;
+    ProtoCarModel carModel = 10;
 }
 
 message GrpcStatus {
@@ -50,9 +50,9 @@ message GetModelListRequest {
 }
 
 message GetCarModelsInRangeResponse {
-    repeated CarModel carModels = 1;
+    repeated ProtoCarModel carModels = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }
 
 message GetModelRequest {
@@ -60,31 +60,31 @@ message GetModelRequest {
 }
 
 message GetCarModelResponse {
-    CarModel carModel = 1;
+    ProtoCarModel carModel = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }
 
 message GetManufacturersInRangeResponse {
-    repeated ManufacturerModel manufacturers = 1;
+    repeated ProtoManufacturerModel manufacturers = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }
 
 message GetManufacturerResponse {
-    ManufacturerModel manufacturer = 1;
+    ProtoManufacturerModel manufacturer = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }
 
 message GetVehiclesInRangeResponse {
-    repeated VehicleModel vehicles = 1;
+    repeated ProtoVehicleModel vehicles = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }
 
 message GetVehicleResponse {
-    VehicleModel vehicle = 1;
+    ProtoVehicleModel vehicle = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }

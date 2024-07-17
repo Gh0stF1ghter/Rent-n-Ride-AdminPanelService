@@ -28,9 +28,9 @@ message GetVehicleClientHistoriesInRangeRequest {
 }
 
 message GetVehicleClientHistoriesInRangeResponse {
-    repeated VehicleClientHistoryModel vehicleClientHistory = 1;
+    repeated ProtoVehicleClientHistoryModel vehicleClientHistory = 1;
     
-    Status status = 2;
+    GrpcStatus status = 2;
 }
 
 message GetVehicleClientHistoryRequest {
@@ -38,7 +38,7 @@ message GetVehicleClientHistoryRequest {
 }
 
 message GetVehicleClientHistoryResponse {
-    VehicleClientHistoryModel vehicleClientHistory = 1;
+    ProtoVehicleClientHistoryModel vehicleClientHistory = 1;
 
-    Status status = 2;
+    GrpcStatus status = 2;
 }

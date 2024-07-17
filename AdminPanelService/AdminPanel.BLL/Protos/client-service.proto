@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option csharp_namespace = "ClientService";
+option csharp_namespace = "ClientGrpcService";
 
-message ClientModel {
+message ProtoClientModel {
     string id = 1;
 
     string firstName = 2;
@@ -12,7 +12,7 @@ message ClientModel {
     bool isRenting = 6;
 }
 
-message Status {
+message GrpcStatus {
     string statusCode = 1;
     string message = 2;
 }

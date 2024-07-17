@@ -1,20 +1,20 @@
 syntax = "proto3";
 
-option csharp_namespace = "CatalogService";
+option csharp_namespace = "CatalogGrpcService";
 
-message ManufacturerModel {
+message ProtoManufacturerModel {
     string id = 1;
     string name = 2;
 }
 
-message CarModel {
+message ProtoCarModel {
     string id = 1;
     string name = 2;
     string manufacturerId = 3;
     ManufacturerModel manufaturer = 4;
 }
 
-message VehicleModel {
+message ProtoVehicleModel {
     string id = 1;
     string plateNumber = 2;
     int32 odo = 3;
@@ -28,7 +28,7 @@ message VehicleModel {
     CarModel carModel = 10;
 }
 
-message Status {
+message GrpcStatus {
     string statusCode = 1;
     string message = 2;
 }

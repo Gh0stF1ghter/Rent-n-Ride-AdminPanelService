@@ -28,9 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\client-service.proto" GrpcServices="Server"/>
-    <Protobuf Include="Protos\rent-service.proto" GrpcServices="Server"/>
-    <Protobuf Include="Protos\catalog-service.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\client-service.proto" GrpcServices="Client"/>
+    <Protobuf Include="Protos\rent-service.proto" GrpcServices="Client"/>
+    <Protobuf Include="Protos\catalog-service.proto" GrpcServices="Client" />
   </ItemGroup>
   
 </Project>

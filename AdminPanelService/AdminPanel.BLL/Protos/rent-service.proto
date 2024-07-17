@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option csharp_namespace = "RentService";
+option csharp_namespace = "RentGrpcService";
 
-message VehicleClientHistoryModel {
+message ProtoVehicleClientHistoryModel {
     string id = 1;
 
     int64 startDate = 2;
@@ -12,7 +12,7 @@ message VehicleClientHistoryModel {
     string clientId = 5;
 }
 
-message Status {
+message GrpcStatus {
     string statusCode = 1;
     string message = 2;
 }

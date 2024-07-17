@@ -28,17 +28,63 @@ message VehicleModel {
     CarModel carModel = 10;
 }
 
-service CatalogService {
-    rpc GetCarModels(GetCarModelsRequest) returns (GetCarModelsResponse);
+message Status {
+    string statusCode = 1;
+    string message = 2;
 }
 
-message GetCarModelsRequest {
+service CatalogService {
+    rpc GetCarModels(GetModelListRequest) returns (GetCarModelsInRangeResponse);
+    rpc GetCarModel(GetModelRequest) returns (GetCarModelResponse);
+
+    rpc GetManufacturers(GetModelListRequest) returns (GetManufacturersInRangeResponse);
+    rpc GetManufacturer(GetModelRequest) returns (GetManufacturerResponse);
+
+    rpc GetVehicles(GetModelListRequest) returns (GetVehiclesInRangeResponse);
+    rpc GetVehicle(GetModelRequest) returns (GetVehicleResponse);
+}
+
+message GetModelListRequest {
     int32 pageNumber = 1;
     int32 pageSize = 2;
 }
 
-message GetCarModelsResponse {
-    repeated CarModel = 1;
-    string statusCode = 2;
-    string message = 3;
+message GetCarModelsInRangeResponse {
+    repeated CarModel carModels = 1;
+
+    Status status = 2;
+}
+
+message GetModelRequest {
+    string id = 1;
+}
+
+message GetCarModelResponse {
+    CarModel carModel = 1;
+
+    Status status = 2;
+}
+
+message GetManufacturersInRangeResponse {
+    repeated ManufacturerModel manufacturers = 1;
+
+    Status status = 2;
+}
+
+message GetManufacturerResponse {
+    ManufacturerModel manufacturer = 1;
+
+    Status status = 2;
+}
+
+message GetVehiclesInRangeResponse {
+    repeated VehicleModel vehicles = 1;
+
+    Status status = 2;
+}
+
+message GetVehicleResponse {
+    VehicleModel vehicle = 1;
+
+    Status status = 2;
 }

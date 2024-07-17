@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "ClientService";
+
+message ClientModel {
+    string id = 1;
+
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    double balance = 5;
+    bool isRenting = 6;
+}
+
+message Status {
+    string statusCode = 1;
+    string message = 2;
+}
+
+service ClientService {
+    rpc GetClients(GetClientsInRangeRequest) returns (GetClientsInRangeResponse);
+    rpc GetClient (GetClientRequest) returns (GetClientResponse);
+}
+
+message GetClientsInRangeRequest {
+    int32 pageNumber = 1;
+    int32 pageSize = 2;
+}
+
+message GetClientsInRangeResponse {
+    repeated ClientModel clients = 1;
+
+    Status status = 2;
+}
+
+message GetClientRequest {
+    string id = 1;
+}
+
+message GetClientResponse {
+    ClientModel client = 1; 
+
+    Status status = 2;
+}

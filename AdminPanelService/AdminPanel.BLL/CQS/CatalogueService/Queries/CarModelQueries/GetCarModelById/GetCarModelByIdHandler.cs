@@ -9,14 +9,14 @@ public sealed class GetCarModelByIdHandler(CatalogService.CatalogServiceClient c
 {
     public async Task<CarModel> Handle(GetCarModelByIdQuery query, CancellationToken cancellationToken)
     {
-        var carModelRequest = new GetModelRequest
+        var request = new GetModelRequest
         {
             Id = query.Id.ToString()
         };
 
-        var carModelResponse = await client.GetCarModelAsync(carModelRequest, cancellationToken: cancellationToken);
+        var response = await client.GetCarModelAsync(request, cancellationToken: cancellationToken);
 
-        var carModel = carModelResponse.CarModel.Adapt<CarModel>();
+        var carModel = response.CarModel.Adapt<CarModel>();
 
         return carModel;
     }

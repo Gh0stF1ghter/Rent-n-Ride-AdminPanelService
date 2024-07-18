@@ -15,8 +15,14 @@ public static class ServicesConfiguration
 
     public static void ConfigureGrpcToServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddGrpcClient<CatalogGrpcService.CatalogService.CatalogServiceClient>();
-        services.AddGrpcClient<ClientGrpcService.ClientService.ClientServiceClient>();
-        services.AddGrpcClient<RentGrpcService.RentService.RentServiceClient>();
+        services.AddGrpcClient<CatalogGrpcService.CatalogService.CatalogServiceClient>(options => 
+            options.Address = new Uri(configuration.GetConnectionString("CatalogServiceConnection"))
+            );
+        services.AddGrpcClient<ClientGrpcService.ClientService.ClientServiceClient>(options =>
+            options.Address = new Uri(configuration.GetConnectionString("ClientServiceConnection"))
+            );
+        services.AddGrpcClient<RentGrpcService.RentService.RentServiceClient>(options =>
+            options.Address = new Uri(configuration.GetConnectionString("RentServiceConnection"))
+            );
     }
 }

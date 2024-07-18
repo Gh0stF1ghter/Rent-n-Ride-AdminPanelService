@@ -11,7 +11,7 @@ message ProtoCarModel {
     string id = 1;
     string name = 2;
     string manufacturerId = 3;
-    ProtoManufacturerModel manufaturer = 4;
+    ProtoManufacturerModel manufacturer = 4;
 }
 
 message ProtoVehicleModel {

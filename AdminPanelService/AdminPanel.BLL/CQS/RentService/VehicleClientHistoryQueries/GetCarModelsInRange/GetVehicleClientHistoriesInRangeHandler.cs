@@ -17,7 +17,7 @@ public sealed class GetVehicleClientHistoryModelsInRangeHandler(RentGrpcService.
 
         var response = await client.GetVehicleClientHistoriesAsync(request, cancellationToken: cancellationToken);
 
-        var vehicleClientHistories = response.VehicleClientHistory.Adapt<IEnumerable<VehicleClientHistoryModel>>();
+        var vehicleClientHistories = response.VehicleClientHistories.Adapt<IEnumerable<VehicleClientHistoryModel>>();
 
         return vehicleClientHistories;
     }

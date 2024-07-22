@@ -38,6 +38,11 @@ public class ExceptionHandlingMiddleware(RequestDelegate next)
                 ex.Message
                 ),
 
+            BadRequestException => new ExceptionResponse(
+                (int)HttpStatusCode.BadRequest,
+                ex.Message
+                ),
+
             _ => new ExceptionResponse(
                 (int)HttpStatusCode.InternalServerError,
                 ex.Message

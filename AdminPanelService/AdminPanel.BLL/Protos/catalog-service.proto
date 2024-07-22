@@ -28,11 +28,6 @@ message ProtoVehicleModel {
     ProtoCarModel carModel = 10;
 }
 
-message GrpcStatus {
-    string statusCode = 1;
-    string message = 2;
-}
-
 service CatalogService {
     rpc GetCarModels(GetModelListRequest) returns (GetCarModelsInRangeResponse);
     rpc GetCarModel(GetModelRequest) returns (GetCarModelResponse);
@@ -52,7 +47,8 @@ message GetModelListRequest {
 message GetCarModelsInRangeResponse {
     repeated ProtoCarModel carModels = 1;
 
-    GrpcStatus status = 2;
+    int32 statusCode = 2;
+    string message = 3;
 }
 
 message GetModelRequest {
@@ -62,29 +58,34 @@ message GetModelRequest {
 message GetCarModelResponse {
     ProtoCarModel carModel = 1;
 
-    GrpcStatus status = 2;
+    int32 statusCode = 2;
+    string message = 3;
 }
 
 message GetManufacturersInRangeResponse {
     repeated ProtoManufacturerModel manufacturers = 1;
 
-    GrpcStatus status = 2;
+    int32 statusCode = 2;
+    string message = 3;
 }
 
 message GetManufacturerResponse {
     ProtoManufacturerModel manufacturer = 1;
 
-    GrpcStatus status = 2;
+    int32 statusCode = 2;
+    string message = 3;
 }
 
 message GetVehiclesInRangeResponse {
     repeated ProtoVehicleModel vehicles = 1;
 
-    GrpcStatus status = 2;
+    int32 statusCode = 2;
+    string message = 3;
 }
 
 message GetVehicleResponse {
     ProtoVehicleModel vehicle = 1;
 
-    GrpcStatus status = 2;
+    int32 statusCode = 2;
+    string message = 3;
 }

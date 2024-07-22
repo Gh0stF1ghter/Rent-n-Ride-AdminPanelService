@@ -1,5 +1,8 @@
-﻿using AdminPanel.BLL.Models;
+﻿using AdminPanel.BLL.Exceptions;
+using AdminPanel.BLL.Exceptions.ExceptionMessages;
+using AdminPanel.BLL.Models;
 using CatalogGrpcService;
+using Google.Rpc;
 using Mapster;
 using MediatR;
 
@@ -15,6 +18,9 @@ public sealed class GetCarModelByIdHandler(CatalogService.CatalogServiceClient c
         };
 
         var response = await client.GetCarModelAsync(request, cancellationToken: cancellationToken);
+
+        if (response.StatusCode is (int)Code.FailedPrecondition)
+            throw new BadRequestException(ExceptionMessages.InvalidIdFormat);
 
         var carModel = response.CarModel.Adapt<CarModel>();
 

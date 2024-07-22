@@ -18,6 +18,8 @@ var app = builder.Build();
 
 app.UseSwaggerForOcelotUI();
 
+app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 

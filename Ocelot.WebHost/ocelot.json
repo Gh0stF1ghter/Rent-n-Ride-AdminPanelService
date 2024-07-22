@@ -1,32 +1,34 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:8083"
+    "BaseUrl": "https://localhost:8087"
   },
   "Routes": [
     //Catalogue
     //CarModels
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/car-models/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/car-models/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/model/{everything}",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "SwaggerKey": "CatalogueService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/car-models",
       "UpstreamHttpMethod": [ "Post" ],
-      "DownstreamPathTemplate": "/api/car-models",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/model",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "AuthenticationOptions": {
@@ -36,14 +38,15 @@
       "SwaggerKey": "CatalogueService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/car-models/{id}",
       "UpstreamHttpMethod": [ "Put", "Delete" ],
-      "DownstreamPathTemplate": "/api/car-models/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/model/{id}",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "AuthenticationOptions": {
@@ -54,27 +57,29 @@
     },
     //Manufacturers
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/manufacturer/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/manufacturer/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "SwaggerKey": "CatalogueService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/manufacturer",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/manufacturer",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "AuthenticationOptions": {
@@ -84,14 +89,15 @@
       "SwaggerKey": "CatalogueService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/manufacturer/{id}",
       "UpstreamHttpMethod": [ "Put", "Delete" ],
       "DownstreamPathTemplate": "/api/manufacturer/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "AuthenticationOptions": {
@@ -102,27 +108,29 @@
     },
     //Vehicles
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/vehicle/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/vehicle/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "SwaggerKey": "CatalogueService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/vehicle",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/vehicle",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "AuthenticationOptions": {
@@ -132,14 +140,15 @@
       "SwaggerKey": "CatalogueService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/catalog/vehicle/{id}",
       "UpstreamHttpMethod": [ "Put", "Delete" ],
       "DownstreamPathTemplate": "/api/vehicle/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalogue.service",
-          "Port": 8080
+          "Port": 8081
         }
       ],
       "AuthenticationOptions": {
@@ -151,27 +160,29 @@
     //RentService
     //VehicleClientHistory
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/rent/history-of-use/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/history-of-use/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "rent.service",
-          "Port": 8081
+          "Port": 8083
         }
       ],
       "SwaggerKey": "RentService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/rent/history-of-use",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/history-of-use",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "rent.service",
-          "Port": 8081
+          "Port": 8083
         }
       ],
       "AuthenticationOptions": {
@@ -181,14 +192,15 @@
       "SwaggerKey": "RentService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/rent/history-of-use/{id}",
       "UpstreamHttpMethod": [ "Put" ],
       "DownstreamPathTemplate": "/api/history-of-use/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "rent.service",
-          "Port": 8081
+          "Port": 8083
         }
       ],
       "AuthenticationOptions": {
@@ -198,14 +210,15 @@
       "SwaggerKey": "RentService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/rent/history-of-use/{id}",
       "UpstreamHttpMethod": [ "Delete" ],
       "DownstreamPathTemplate": "/api/history-of-use/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "rent.service",
-          "Port": 8081
+          "Port": 8083
         }
       ],
       "AuthenticationOptions": {
@@ -217,27 +230,29 @@
     //UserService
     //Client
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/users/client/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/client/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "user.service",
-          "Port": 8082
+          "Port": 8085
         }
       ],
       "SwaggerKey": "UserService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/users/client",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/client",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "user.service",
-          "Port": 8082
+          "Port": 8085
         }
       ],
       "AuthenticationOptions": {
@@ -247,14 +262,15 @@
       "SwaggerKey": "UserService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/users/client/{id}",
       "UpstreamHttpMethod": [ "Delete" ],
       "DownstreamPathTemplate": "/api/client/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "user.service",
-          "Port": 8082
+          "Port": 8085
         }
       ],
       "AuthenticationOptions": {
@@ -264,14 +280,15 @@
       "SwaggerKey": "UserService"
     },
     {
+      "DangerousAcceptAnyServerCertificateValidator": true,
       "UpstreamPathTemplate": "/users/client/{id}",
       "UpstreamHttpMethod": [ "Put" ],
       "DownstreamPathTemplate": "/api/client/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "user.service",
-          "Port": 8082
+          "Port": 8085
         }
       ],
       "AuthenticationOptions": {
@@ -288,7 +305,7 @@
         {
           "Name": "Catalogue Service",
           "Version": "v1",
-          "Url": "http://catalogue.service:8080/swagger/v1/swagger.json"
+          "Url": "https://catalogue.service:8081/swagger/v1/swagger.json"
         }
       ]
     },
@@ -298,7 +315,7 @@
         {
           "Name": "Rent Service",
           "Version": "v1",
-          "Url": "http://rent.service:8081/swagger/v1/swagger.json"
+          "Url": "https://rent.service:8083/swagger/v1/swagger.json"
         }
       ]
     },
@@ -308,7 +325,7 @@
         {
           "Name": "User Service",
           "Version": "v1",
-          "Url": "http://user.service:8082/swagger/v1/swagger.json"
+          "Url": "https://user.service:8085/swagger/v1/swagger.json"
         }
       ]
     }

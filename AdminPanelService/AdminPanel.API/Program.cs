@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 
-services.AddApplicationDependencies();
+services.AddApplicationDependencies(builder.Configuration);
 services.AddApiDependencies();
 
 services.AddControllers();
@@ -20,6 +20,8 @@ app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

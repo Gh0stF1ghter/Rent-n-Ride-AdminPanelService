@@ -3,7 +3,7 @@
 namespace AdminPanel.API.ViewModels.ShortViewModels;
 
 public record ShortVehicleViewModel(
-    Guid? ModelId,
+    Guid? CarModelId,
     string PlateNumber,
     decimal RentCost,
     int Odo,

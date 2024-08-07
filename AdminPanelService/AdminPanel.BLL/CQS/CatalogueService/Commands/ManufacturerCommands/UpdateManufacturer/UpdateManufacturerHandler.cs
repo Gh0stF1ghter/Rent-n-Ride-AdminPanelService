@@ -1,12 +1,16 @@
-﻿using AdminPanel.BLL.Models;
+﻿using EventBus.CatalogueServiceEvents.ManufacturerEvents;
+using Mapster;
+using MassTransit;
 using MediatR;
 
 namespace AdminPanel.BLL.CQS.CatalogueService.Commands.ManufacturerCommands.UpdateManufacturer;
 
-public sealed class UpdateManufacturerHandler : IRequestHandler<UpdateManufacturerCommand, ManufacturerModel>
+public sealed class UpdateManufacturerHandler(IPublishEndpoint publishEndpoint) : IRequestHandler<UpdateManufacturerCommand>
 {
-    public Task<ManufacturerModel> Handle(UpdateManufacturerCommand command, CancellationToken cancellationToken)
+    public async Task Handle(UpdateManufacturerCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var carModelToUpdate = command.UpdatedModel.Adapt<ManufacturerUpdated>();
+
+        await publishEndpoint.Publish(carModelToUpdate, cancellationToken);
     }
 }

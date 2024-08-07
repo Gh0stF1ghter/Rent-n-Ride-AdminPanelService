@@ -3,6 +3,7 @@ using AdminPanel.BLL.CQS.CatalogueService.Commands.CarModelCommands.DeleteCarMod
 using AdminPanel.BLL.CQS.CatalogueService.Commands.CarModelCommands.UpdateCarModel;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelById;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelsInRange;
+using EventBus.CatalogueServiceEvents.CarModelEvents;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AdminPanel.API.Controllers;

@@ -36,29 +36,21 @@ public class VehicleController(ISender sender) : ControllerBase
 
     [HttpPost]
     [ActionName("CreateVehicle")]
-    public async Task<VehicleViewModel> Create([FromBody] ShortVehicleViewModel createClientViewModel, CancellationToken cancellationToken)
+    public async Task Create([FromBody] ShortVehicleViewModel createClientViewModel, CancellationToken cancellationToken)
     {
         var createVehicleModel = createClientViewModel.Adapt<VehicleModel>();
 
-        var newVehicle = await sender.Send(new AddVehicleCommand(createVehicleModel), cancellationToken);
-
-        var vehicleVM = newVehicle.Adapt<VehicleViewModel>();
-
-        return vehicleVM;
+        await sender.Send(new AddVehicleCommand(createVehicleModel), cancellationToken);
     }
 
     [HttpPut("{id}")]
     [ActionName("UpdateVehicleById")]
-    public async Task<VehicleViewModel> Update([FromRoute] Guid id, [FromBody] ShortVehicleViewModel updateVehicleViewModel, CancellationToken cancellationToken)
+    public async Task Update([FromRoute] Guid id, [FromBody] ShortVehicleViewModel updateVehicleViewModel, CancellationToken cancellationToken)
     {
         var vehicleModel = updateVehicleViewModel.Adapt<VehicleModel>();
         vehicleModel.Id = id;
 
-        var newVehicle = await sender.Send(new UpdateVehicleCommand(vehicleModel), cancellationToken);
-
-        var vehicleVM = newVehicle.Adapt<VehicleViewModel>();
-
-        return vehicleVM;
+        await sender.Send(new UpdateVehicleCommand(vehicleModel), cancellationToken);
     }
 
     [HttpDelete("{id}")]

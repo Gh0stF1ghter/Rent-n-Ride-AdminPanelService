@@ -8,8 +8,8 @@ public record VehicleViewModel(
     int Odo,
     decimal RentCost,
     bool IsRented,
-    VehicleType VehicleType,
-    VehicleState VehicleState,
-    FuelType FuelType,
+    VehicleType VehicleType = VehicleType.None,
+    VehicleState VehicleState = VehicleState.None,
+    FuelType FuelType = FuelType.None,
     CarModelViewModel? CarModel
     );

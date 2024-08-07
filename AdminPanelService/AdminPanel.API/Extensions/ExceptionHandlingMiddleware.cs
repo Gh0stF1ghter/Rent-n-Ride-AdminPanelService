@@ -1,9 +1,9 @@
-﻿using AdminPanel.BLL.Exceptions;
+﻿using AdminPanel.API.Exceptions;
+using AdminPanel.BLL.Exceptions;
 using System.Net;
 using System.Text.Json;
-using User.API.Exceptions;
 
-namespace User.API.Extensions;
+namespace AdminPanel.API.Extensions;
 
 public class ExceptionHandlingMiddleware(RequestDelegate next)
 {
@@ -34,6 +34,11 @@ public class ExceptionHandlingMiddleware(RequestDelegate next)
                 ),
 
             InvalidDataException => new ExceptionResponse(
+                (int)HttpStatusCode.BadRequest,
+                ex.Message
+                ),
+
+            BadRequestException => new ExceptionResponse(
                 (int)HttpStatusCode.BadRequest,
                 ex.Message
                 ),

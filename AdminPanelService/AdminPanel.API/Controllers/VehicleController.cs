@@ -3,10 +3,12 @@ using AdminPanel.BLL.CQS.CatalogueService.Commands.VehicleCommands.DeleteVehicle
 using AdminPanel.BLL.CQS.CatalogueService.Commands.VehicleCommands.UpdateVehicle;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.VehicleQueries.GetVehicleById;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.VehicleQueries.GetVehiclesInRange;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdminPanel.API.Controllers;
 
 [ApiController]
+[Authorize("use:dashboard")]
 [Route("api/vehicle")]
 public class VehicleController(ISender sender) : ControllerBase
 {

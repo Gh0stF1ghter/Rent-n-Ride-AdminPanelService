@@ -3,10 +3,12 @@ using AdminPanel.BLL.CQS.CatalogueService.Commands.ManufacturerCommands.DeleteMa
 using AdminPanel.BLL.CQS.CatalogueService.Commands.ManufacturerCommands.UpdateManufacturer;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.ManufacturerQueries.GetManufacturerById;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.ManufacturerQueries.GetManufacturersInRange;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdminPanel.API.Controllers;
 
 [ApiController]
+[Authorize("use:dashboard")]
 [Route("api/manufacturer")]
 public class ManufacturerController(ISender sender) : ControllerBase
 {

@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+option csharp_namespace = "CatalogGrpcService";
+
+message ProtoManufacturerModel {
+    string id = 1;
+    string name = 2;
+}
+
+message ProtoCarModel {
+    string id = 1;
+    string name = 2;
+    string manufacturerId = 3;
+    ProtoManufacturerModel manufacturer = 4;
+}
+
+message ProtoVehicleModel {
+    string id = 1;
+    string plateNumber = 2;
+    int32 odo = 3;
+    double rentCost = 4;
+    bool isRented = 5;
+    int32 vehicleType = 6;
+    int32 vehicleState = 7;
+    int32 fuelType = 8;
+
+    string modelId = 9;
+    ProtoCarModel carModel = 10;
+}
+
+service CatalogService {
+    rpc GetCarModels(GetModelListRequest) returns (GetCarModelsInRangeResponse);
+    rpc GetCarModel(GetModelRequest) returns (GetCarModelResponse);
+
+    rpc GetManufacturers(GetModelListRequest) returns (GetManufacturersInRangeResponse);
+    rpc GetManufacturer(GetModelRequest) returns (GetManufacturerResponse);
+
+    rpc GetVehicles(GetModelListRequest) returns (GetVehiclesInRangeResponse);
+    rpc GetVehicle(GetModelRequest) returns (GetVehicleResponse);
+}
+
+message GetModelListRequest {
+    int32 pageNumber = 1;
+    int32 pageSize = 2;
+}
+
+message GetCarModelsInRangeResponse {
+    repeated ProtoCarModel carModels = 1;
+
+    int32 statusCode = 2;
+    string message = 3;
+}
+
+message GetModelRequest {
+    string id = 1;
+}
+
+message GetCarModelResponse {
+    ProtoCarModel carModel = 1;
+
+    int32 statusCode = 2;
+    string message = 3;
+}
+
+message GetManufacturersInRangeResponse {
+    repeated ProtoManufacturerModel manufacturers = 1;
+
+    int32 statusCode = 2;
+    string message = 3;
+}
+
+message GetManufacturerResponse {
+    ProtoManufacturerModel manufacturer = 1;
+
+    int32 statusCode = 2;
+    string message = 3;
+}
+
+message GetVehiclesInRangeResponse {
+    repeated ProtoVehicleModel vehicles = 1;
+
+    int32 statusCode = 2;
+    string message = 3;
+}
+
+message GetVehicleResponse {
+    ProtoVehicleModel vehicle = 1;
+
+    int32 statusCode = 2;
+    string message = 3;
+}

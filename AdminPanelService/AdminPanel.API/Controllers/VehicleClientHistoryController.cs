@@ -3,10 +3,12 @@ using AdminPanel.BLL.CQS.RentService.VehicleClientHistoryCommands.DeleteVehicleC
 using AdminPanel.BLL.CQS.RentService.VehicleClientHistoryCommands.UpdateVehicleClientHistory;
 using AdminPanel.BLL.CQS.RentService.VehicleClientHistoryQueries.GetCarModelById;
 using AdminPanel.BLL.CQS.RentService.VehicleClientHistoryQueries.GetCarModelsInRange;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdminPanel.API.Controllers;
 
 [ApiController]
+[Authorize("use:dashboard")]
 [Route("api/history-of-use")]
 public class VehicleClientHistoryController(ISender sender) : ControllerBase
 {

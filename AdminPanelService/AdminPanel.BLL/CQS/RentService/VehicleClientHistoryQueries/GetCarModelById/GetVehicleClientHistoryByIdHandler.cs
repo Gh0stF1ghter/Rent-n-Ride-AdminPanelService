@@ -1,12 +1,23 @@
 ﻿using AdminPanel.BLL.Models;
+using Mapster;
 using MediatR;
+using RentGrpcService;
 
 namespace AdminPanel.BLL.CQS.RentService.VehicleClientHistoryQueries.GetCarModelById;
 
-public sealed class GetVehicleClientHistoryByIdHandler : IRequestHandler<GetVehicleClientHistoryByIdQuery, VehicleClientHistoryModel>
+public sealed class GetVehicleClientHistoryByIdHandler(RentGrpcService.RentService.RentServiceClient client) : IRequestHandler<GetVehicleClientHistoryByIdQuery, VehicleClientHistoryModel>
 {
-    public Task<VehicleClientHistoryModel> Handle(GetVehicleClientHistoryByIdQuery query, CancellationToken cancellationToken)
+    public async Task<VehicleClientHistoryModel> Handle(GetVehicleClientHistoryByIdQuery query, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var request = new GetVehicleClientHistoryRequest
+        {
+            Id = query.Id.ToString()
+        };
+
+        var response = await client.GetVehicleClientHistoryAsync(request, cancellationToken: cancellationToken);
+
+        var vehicleClientHistory = response.VehicleClientHistory.Adapt<VehicleClientHistoryModel>();
+
+        return vehicleClientHistory;
     }
 }

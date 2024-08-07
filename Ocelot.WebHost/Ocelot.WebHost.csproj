@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <UserSecretsId>013cd795-67b9-400a-add6-5bbd017feec6</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +17,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties ocelot_1development_1json__JsonSchema="https://json.schemastore.org/ocelot.json" ocelot_1json__JsonSchema="https://json.schemastore.org/ocelot.json" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties ocelot_1json__JsonSchema="https://json.schemastore.org/ocelot.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

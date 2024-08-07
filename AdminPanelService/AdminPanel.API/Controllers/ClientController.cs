@@ -3,10 +3,12 @@ using AdminPanel.BLL.CQS.UserService.ClientCommands.AddClient;
 using AdminPanel.BLL.CQS.UserService.ClientCommands.DeleteClient;
 using AdminPanel.BLL.CQS.UserService.ClientCommands.UpdateClient;
 using AdminPanel.BLL.CQS.UserService.ClientQueries.GetVehiclesInRange;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdminPanel.API.Controllers;
 
 [ApiController]
+[Authorize("use:dashboard")]
 [Route("api/client")]
 public class ClientController(ISender sender) : ControllerBase
 {

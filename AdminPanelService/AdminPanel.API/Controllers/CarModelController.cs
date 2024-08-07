@@ -4,10 +4,12 @@ using AdminPanel.BLL.CQS.CatalogueService.Commands.CarModelCommands.UpdateCarMod
 using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelById;
 using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelsInRange;
 using EventBus.CatalogueServiceEvents.CarModelEvents;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdminPanel.API.Controllers;
 
 [ApiController]
+[Authorize("use:dashboard")]
 [Route("api/model")]
 public class CarModelController(ISender sender) : ControllerBase
 {

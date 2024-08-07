@@ -11,6 +11,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["AdminPanel.API/AdminPanel.API.csproj", "AdminPanel.API/"]
 COPY ["AdminPanel.BLL/AdminPanel.BLL.csproj", "AdminPanel.BLL/"]
+COPY ["EventBus/EventBus.csproj", "EventBus/"]
 RUN dotnet restore "./AdminPanel.API/AdminPanel.API.csproj"
 COPY . .
 WORKDIR "/src/AdminPanel.API"

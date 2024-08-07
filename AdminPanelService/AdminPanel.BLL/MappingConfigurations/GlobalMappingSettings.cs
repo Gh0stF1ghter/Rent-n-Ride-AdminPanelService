@@ -1,14 +1,19 @@
-﻿using Mapster;
+﻿using AdminPanel.BLL.Models;
+using Mapster;
+using RentGrpcService;
 using System.Reflection;
 
 namespace AdminPanel.BLL.MappingConfigurations;
 
-public static class GlobalMappingSettings
+public class GlobalMappingSettings : IRegister
 {
-    public static void SetMapper()
+    public void Register(TypeAdapterConfig config)
     {
-        TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
-        TypeAdapterConfig.GlobalSettings.Default.MaxDepth(2);
+        TypeAdapterConfig.GlobalSettings.Default.MaxDepth(3);
         TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
+
+        config.NewConfig<ProtoVehicleClientHistoryModel, VehicleClientHistoryModel>()
+            .Map(dest => dest.StartDate, src => src.StartDate.ToDateTime())
+            .Map(dest => dest.EndDate, src => src.EndDate.ToDateTime());
     }
 }

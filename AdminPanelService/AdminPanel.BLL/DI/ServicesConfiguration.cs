@@ -14,6 +14,47 @@ public static class ServicesConfiguration
         services.AddMessageBroker(configuration);
 
         services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+        services.ConfigureGrpcToServices(configuration);
+    }
+
+    public static void ConfigureGrpcToServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddGrpcClient<CatalogGrpcService.CatalogService.CatalogServiceClient>(options =>
+            options.Address = new Uri(configuration.GetConnectionString("CatalogServiceConnection"))
+            ).ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                var handler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+
+                return handler;
+            });
+
+        services.AddGrpcClient<ClientGrpcService.ClientService.ClientServiceClient>(options =>
+            options.Address = new Uri(configuration.GetConnectionString("ClientServiceConnection"))
+            ).ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                var handler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+
+                return handler;
+            });
+
+        services.AddGrpcClient<RentGrpcService.RentService.RentServiceClient>(options =>
+            options.Address = new Uri(configuration.GetConnectionString("RentServiceConnection"))
+            ).ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                var handler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+
+                return handler;
+            });
     }
 
     public static void AddMessageBroker(this IServiceCollection services, IConfiguration configuration) =>

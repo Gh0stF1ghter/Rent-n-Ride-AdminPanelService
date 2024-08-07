@@ -1,3 +1,3 @@
-﻿namespace User.API.Exceptions;
+﻿namespace AdminPanel.API.Exceptions;
 
-public record ExceptionResponse(int StatusCode, string message);
+public record ExceptionResponse(int StatusCode, string Message);

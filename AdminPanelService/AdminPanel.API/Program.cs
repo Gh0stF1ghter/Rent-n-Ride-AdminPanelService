@@ -1,13 +1,13 @@
 using AdminPanel.API.DI;
+using AdminPanel.API.Extensions;
 using AdminPanel.BLL.DI;
-using User.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 
 services.AddApplicationDependencies(builder.Configuration);
-services.AddApiDependencies();
+services.AddApiDependencies(builder.Configuration);
 
 services.AddControllers();
 services.AddEndpointsApiExplorer();

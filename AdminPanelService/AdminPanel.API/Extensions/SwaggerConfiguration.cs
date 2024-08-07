@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace User.API.Extensions;
+namespace AdminPanel.API.Extensions;
 
 public static class SwaggerConfiguration
 {

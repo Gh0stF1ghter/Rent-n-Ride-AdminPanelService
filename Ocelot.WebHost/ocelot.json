@@ -185,10 +185,6 @@
           "Port": 8083
         }
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKeys": ["Auth0Key"],
-        "AllowedScopes": []
-      },
       "SwaggerKey": "RentService"
     },
     {
@@ -203,10 +199,6 @@
           "Port": 8083
         }
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKeys": ["Auth0Key"],
-        "AllowedScopes": []
-      },
       "SwaggerKey": "RentService"
     },
     {
@@ -221,10 +213,6 @@
           "Port": 8083
         }
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKeys": ["Auth0Key"],
-        "AllowedScopes": ["delete: history-of-use"]
-      },
       "SwaggerKey": "RentService"
     },
     //UserService

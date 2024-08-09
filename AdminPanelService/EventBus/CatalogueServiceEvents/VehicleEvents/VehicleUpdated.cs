@@ -4,7 +4,7 @@ namespace EventBus.CatalogueServiceEvents.VehicleEvents;
 
 public record VehicleUpdated(
     Guid Id,
-    Guid? ModelId,
+    Guid? CarModelId,
     string PlateNumber,
     decimal RentCost,
     int Odo,

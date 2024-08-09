@@ -6,7 +6,7 @@ public class ShortVehicleViewModelValidator : AbstractValidator<ShortVehicleView
 {
     public ShortVehicleViewModelValidator()
     {
-        RuleFor(v => v.ModelId)
+        RuleFor(v => v.CarModelId)
             .NotEmpty().WithMessage("Car model should have a manufacturer");
 
         RuleFor(v => v.Odo)

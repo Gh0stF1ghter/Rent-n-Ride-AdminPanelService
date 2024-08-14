@@ -1,6 +1,7 @@
 ﻿namespace EventBus.UserEvents;
 
 public record UserCreated(
+    string Password,
     string FirstName,
     string LastName,
     string Email,

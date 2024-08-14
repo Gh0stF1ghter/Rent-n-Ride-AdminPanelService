@@ -2,7 +2,6 @@
 
 public record UserUpdated(
     Guid Id,
-    string FirstName,
-    string LastName,
+    decimal Balance,
     bool IsRenting
     );

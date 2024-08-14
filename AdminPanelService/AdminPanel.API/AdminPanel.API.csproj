@@ -23,7 +23,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Extensions\" />
     <Folder Include="DI\" />
-    <Folder Include="Validators\" />
     <Folder Include="ViewModels\ShortViewModels\" />
   </ItemGroup>
 

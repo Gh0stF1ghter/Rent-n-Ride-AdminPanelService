@@ -1,4 +1,4 @@
-﻿using EventBus;
+﻿using EventBus.UserEvents;
 using Mapster;
 using MassTransit;
 using MediatR;

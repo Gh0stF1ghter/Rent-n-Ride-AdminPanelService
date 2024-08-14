@@ -33,29 +33,21 @@ public class VehicleClientHistoryController(ISender sender) : ControllerBase
     }
 
     [HttpPost(Name = "CreateVehicleClientHistory")]
-    public async Task<VehicleClientHistoryViewModel> Create([FromBody] ShortVehicleClientHistoryViewModel createVehicleClientHistoryViewModel, CancellationToken cancellationToken)
+    public async Task Create([FromBody] ShortVehicleClientHistoryViewModel createVehicleClientHistoryViewModel, CancellationToken cancellationToken)
     {
         var vehicleClientHistoryModel = createVehicleClientHistoryViewModel.Adapt<VehicleClientHistoryModel>();
-
-        var newVehicleClientHistory = await sender.Send(new AddVehicleClientHistoryCommand(vehicleClientHistoryModel), cancellationToken);
-
-        var vehicleClientHistoryVM = newVehicleClientHistory.Adapt<VehicleClientHistoryViewModel>();
-
-        return vehicleClientHistoryVM;
+        
+        await sender.Send(new AddVehicleClientHistoryCommand(vehicleClientHistoryModel), cancellationToken);
     }
 
     [HttpPut("{id}", Name = "UpdateVehicleClientHistoryById")]
-    public async Task<VehicleClientHistoryViewModel> Update([FromRoute] Guid id, [FromBody] ShortVehicleClientHistoryViewModel updateModelNameViewModel, CancellationToken cancellationToken)
+    public async Task Update([FromRoute] Guid id, [FromBody] ShortVehicleClientHistoryViewModel updateModelNameViewModel, CancellationToken cancellationToken)
     {
         var vehicleClientHistoryModel = updateModelNameViewModel.Adapt<VehicleClientHistoryModel>();
 
         vehicleClientHistoryModel.Id = id;
 
-        var newVehicleClientHistory = await sender.Send(new UpdateVehicleClientHistoryCommand(vehicleClientHistoryModel), cancellationToken);
-
-        var vehicleClientHistoryVM = newVehicleClientHistory.Adapt<VehicleClientHistoryViewModel>();
-
-        return vehicleClientHistoryVM;
+        await sender.Send(new UpdateVehicleClientHistoryCommand(vehicleClientHistoryModel), cancellationToken);
     }
 
     [HttpDelete("{id}", Name = "DeleteVehicleClientHistoryById")]

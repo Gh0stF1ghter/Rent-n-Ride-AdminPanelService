@@ -1,14 +1,15 @@
-﻿using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelById;
+﻿using AdminPanel.API.ViewModels.UpdateViewModels;
+using AdminPanel.BLL.CQS.CatalogueService.Queries.CarModelQueries.GetCarModelById;
 using AdminPanel.BLL.CQS.UserService.ClientCommands.AddClient;
 using AdminPanel.BLL.CQS.UserService.ClientCommands.DeleteClient;
 using AdminPanel.BLL.CQS.UserService.ClientCommands.UpdateClient;
+using AdminPanel.BLL.CQS.UserService.ClientQueries.GetVehicleById;
 using AdminPanel.BLL.CQS.UserService.ClientQueries.GetVehiclesInRange;
 using Microsoft.AspNetCore.Authorization;
 
 namespace AdminPanel.API.Controllers;
 
 [ApiController]
-[Authorize("use:dashboard")]
 [Route("api/client")]
 public class ClientController(ISender sender) : ControllerBase
 {
@@ -27,7 +28,7 @@ public class ClientController(ISender sender) : ControllerBase
     [ActionName("GetClientById")]
     public async Task<ClientViewModel> GetById([FromRoute] Guid id, CancellationToken cancellationToken)
     {
-        var client = await sender.Send(new GetCarModelByIdQuery(id), cancellationToken);
+        var client = await sender.Send(new GetClientByIdQuery(id), cancellationToken);
 
         var clientVM = client.Adapt<ClientViewModel>();
 
@@ -36,30 +37,22 @@ public class ClientController(ISender sender) : ControllerBase
 
     [HttpPost]
     [ActionName("CreateClient")]
-    public async Task<ClientViewModel> Create([FromBody] ShortClientViewModel createClientViewModel, CancellationToken cancellationToken)
+    public async Task Create([FromBody] ShortClientViewModel createClientViewModel, CancellationToken cancellationToken)
     {
         var createClientModel = createClientViewModel.Adapt<ClientModel>();
 
-        var newClient = await sender.Send(new AddClientCommand(createClientModel), cancellationToken);
-
-        var clientVM = newClient.Adapt<ClientViewModel>();
-
-        return clientVM;
+        await sender.Send(new AddClientCommand(createClientModel), cancellationToken);
     }
 
     [HttpPut("{id}")]
     [ActionName("UpdateClientById")]
-    public async Task<ClientViewModel> Update([FromRoute] Guid id, [FromBody] ShortClientViewModel updateClientViewModel, CancellationToken cancellationToken)
+    public async Task Update([FromRoute] Guid id, [FromBody] UpdateClientViewModel updateClientViewModel, CancellationToken cancellationToken)
     {
         var clientModel = updateClientViewModel.Adapt<ClientModel>();
 
         clientModel.Id = id;
 
-        var newClient = await sender.Send(new UpdateClientCommand(clientModel), cancellationToken);
-
-        var clientVM = newClient.Adapt<ClientViewModel>();
-
-        return clientVM;
+        await sender.Send(new UpdateClientCommand(clientModel), cancellationToken);
     }
 
     [HttpDelete("{id}")]

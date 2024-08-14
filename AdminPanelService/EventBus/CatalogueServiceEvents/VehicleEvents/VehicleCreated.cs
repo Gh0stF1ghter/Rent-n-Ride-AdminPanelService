@@ -3,7 +3,7 @@
 namespace EventBus.CatalogueServiceEvents.VehicleEvents;
 
 public record VehicleCreated(
-    Guid? ModelId,
+    Guid? CarModelId,
     string PlateNumber,
     decimal RentCost,
     int Odo,

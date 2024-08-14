@@ -1,12 +1,16 @@
-﻿using AdminPanel.BLL.Models;
+﻿using EventBus.UserEvents;
+using Mapster;
+using MassTransit;
 using MediatR;
 
 namespace AdminPanel.BLL.CQS.UserService.ClientCommands.UpdateClient;
 
-public sealed class UpdateClientHandler : IRequestHandler<UpdateClientCommand, ClientModel>
+public sealed class UpdateClientHandler(IPublishEndpoint publishEndpoint) : IRequestHandler<UpdateClientCommand>
 {
-    public Task<ClientModel> Handle(UpdateClientCommand command, CancellationToken cancellationToken)
+    public async Task Handle(UpdateClientCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var userToUpdate = command.UpdatedModel.Adapt<UserUpdated>();
+
+        await publishEndpoint.Publish(userToUpdate, cancellationToken);
     }
 }
